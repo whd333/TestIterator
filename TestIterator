@@ -1,0 +1,74 @@
+package com.deling.commons.util;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class TestIterator {
+
+    public static void main(String[] args) {
+        // int z=0;
+        //在id2集合中查找id1中的20条记录（均匀分布）
+        ArrayList<Integer> id2 =new ArrayList<Integer>();
+        for(int i =0 ; i<10000000 ;i++){
+            id2.add(i);
+        }
+        ArrayList<Integer> id1 =new ArrayList<Integer>();
+        id1.add(1111111);
+        id1.add(1115555);
+        id1.add(2222222);
+        id1.add(2225555);
+        id1.add(3333333);
+        id1.add(3335555);
+        id1.add(4444444);
+        id1.add(4445555);
+        id1.add(5555555);
+        id1.add(5556666);
+        id1.add(6667777);
+        id1.add(6699999);
+        id1.add(7775555);
+        id1.add(7777777);
+        id1.add(8887777);
+        id1.add(8888888);
+        id1.add(9995555);
+        id1.add(9999999);
+        Iterator<Integer> it1 = id1.iterator();
+        Iterator<Integer> its = id2.iterator();
+        long t5 = System.currentTimeMillis();
+        while (it1.hasNext()) {
+            int a =it1.next();
+            //System.out.println("it1="+it1.next());
+            while (its.hasNext()) {
+                //System.out.println("its="+it1.next());
+//                int a =it1.next();
+                int b=its.next();
+                if(a==b){
+                    //it1.next();
+                    //its.next();
+                   // z++;
+                    System.out.println("迭代器实现查找到相同元素="+a);
+                    break;
+                }else{
+                    //its.next();
+                }
+            }
+
+        }
+        long t6= System.currentTimeMillis();
+        System.out.println("迭代器需要时间time1="+(t6-t5));
+
+
+        long t7 = System.currentTimeMillis();
+        for(int i=0;i<id2.size();i++){
+            for (int j = 0; j <id1.size() ; j++) {
+                if(id2.get(i).intValue()==id1.get(j).intValue()){
+                    System.out.println("for循环实现查找到相同元素="+i);
+                    break;
+                }
+            }
+        }
+        long t8 = System.currentTimeMillis();
+        System.out.println("for循环需要时间time2="+(t8-t7));
+    }
+
+
+}
