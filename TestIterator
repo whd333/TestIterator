@@ -6,7 +6,7 @@ import java.util.Iterator;
 public class TestIterator {
 
     public static void main(String[] args) {
-        // int z=0;
+        //// int z=0;
         //在id2集合中查找id1中的20条记录（均匀分布）
         ArrayList<Integer> id2 =new ArrayList<Integer>();
         for(int i =0 ; i<10000000 ;i++){
